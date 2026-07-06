@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import assets from '../assets/assets.js';
-import ThemeToggleBtn from './ThemeToggleBtn.jsx';
+import assets from '../assets/assets';
+import ThemeToggleBtn from './ThemeToggleBtn';
 
 const Navbar = ({ theme, setTheme }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20 backdrop-blur-xl font-medium bg-white/50 dark:bg-gray-900/70">
+    <nav className="flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20 backdrop-blur-xl bg-white/50 dark:bg-gray-900/70 transition-colors duration-300">
+
       <img
         src={theme === 'dark' ? assets.logo_dark : assets.logo}
         alt="Logo"
@@ -28,45 +29,45 @@ const Navbar = ({ theme, setTheme }) => {
       >
         <img
           src={assets.close_icon}
-          alt=""
+          alt="Close"
           className="w-5 absolute right-4 top-4 sm:hidden cursor-pointer"
           onClick={() => setSidebarOpen(false)}
         />
 
-        <a onClick={() => setSidebarOpen(false)} href="#" className="sm:hover:border-b">
+        <a href="#" onClick={() => setSidebarOpen(false)}>
           Home
         </a>
 
-        <a onClick={() => setSidebarOpen(false)} href="#services" className="sm:hover:border-b">
+        <a href="#services" onClick={() => setSidebarOpen(false)}>
           Services
         </a>
 
-        <a onClick={() => setSidebarOpen(false)} href="#our-work" className="sm:hover:border-b">
+        <a href="#our-work" onClick={() => setSidebarOpen(false)}>
           Our Work
         </a>
 
-        <a onClick={() => setSidebarOpen(false)} href="#contact-us" className="sm:hover:border-b">
+        <a href="#contact-us" onClick={() => setSidebarOpen(false)}>
           Contact Us
         </a>
       </div>
 
-      <div className="flex items-center gap-2 sm:gap-4">
+      <div className="flex items-center gap-3">
 
-        <ThemeToggleBtn theme={theme} setTheme={setTheme}/>
+        <ThemeToggleBtn theme={theme} setTheme={setTheme} />
 
         <img
           src={theme === 'dark' ? assets.menu_icon_dark : assets.menu_icon}
-          alt=""
+          alt="Menu"
           className="w-6 sm:hidden cursor-pointer"
           onClick={() => setSidebarOpen(true)}
         />
 
         <a
           href="#contact-us"
-          className="text-sm max-sm:hidden flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full cursor-pointer hover:scale-105 transition-all"
+          className="hidden sm:flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full hover:scale-105 transition"
         >
           Connect
-          <img src={assets.arrow_icon} alt="" width={14} />
+          <img src={assets.arrow_icon} alt="Arrow" width={14} />
         </a>
       </div>
     </nav>
