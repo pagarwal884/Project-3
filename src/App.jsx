@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 
 const App = () => {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'light';
-  });
+  const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+    <div className="relative dark:bg-black ">
       <Navbar theme={theme} setTheme={setTheme} />
     </div>
   );
